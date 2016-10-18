@@ -2,7 +2,7 @@ package calculator;
 
 public class Calculator {
 	
-	public enum Operator{ADDITION, SUBTRACT, MULTIPLY, DIVIDE}
+	public enum Operator{ADD, SUBTRACT, MULTIPLY, DIVIDE}
 	
 	public Calculator() {
 		
@@ -10,7 +10,7 @@ public class Calculator {
 	
 	public double performOperation(double a, double b, Operator operator) {
 		switch(operator) {
-			case ADDITION:
+			case ADD:
 				return a+b;
 			case SUBTRACT:
 				return a-b;
