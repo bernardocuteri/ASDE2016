@@ -8,6 +8,7 @@
 </head>
 <body>
 <h1>Home Page</h1>
+<h2>${welcomeMessage}</h2>
 <p> <a href='login'>Login</a></p>
 <p> <a href='userPage'>Your user page</a></p>
 </body>

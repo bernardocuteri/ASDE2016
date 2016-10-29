@@ -7,20 +7,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/login")
 public class LoginController {
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public String loginForm() {
-		System.out.println("GET");
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String handleLoginPage() {
+		
 		return "login";
 	}
-
-	@RequestMapping(method = RequestMethod.POST)
-	public String loginRequest(@RequestParam String username, @RequestParam String password, Model model) {
-		System.out.println(username +" " + password);
-		
-		return "home";
-	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String handleLoginAction(@RequestParam String username, @RequestParam String password, Model model) {
+		
+		//validate credentials
+		if(username == "ciccio" && password == "pasticcio") {
+			model.addAttribute("loggedUser", "ciccio");
+			return "userHomePage";
+		}
+		return "login";
+		
+		 
+	}
+
 }

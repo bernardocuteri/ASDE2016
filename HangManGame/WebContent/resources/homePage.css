@@ -1,0 +1,68 @@
+h1, h2 {
+	text-align: center;
+}
+
+.centeredDiv {
+	text-align: center;
+}
+
+.centeredDiv h2 {
+	display: inline;
+}
+
+form {
+	display: inline;
+}
+
+.alphabetButtons {
+	margin: 10px auto;
+	width: 500px;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: inline-block;
+	text-align: center;
+}
+
+ul li {
+	display: inline;
+	float: left;
+}
+.resetButton {
+	margin-left: 20px;
+	background: #aaaaaa;
+	border: 1px solid #a9a9a9;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	line-height: 20px;
+}
+
+.letter {
+	float: left;
+	margin: 0 5px 5px 0;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background: white;
+	border: 1px solid #a9a9a9;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.externalContainer {
+	margin: 0 auto;
+    width: 80%;
+	border-style: ridge;
+	border-radius: 5%;
+	border-color: #ffaa00;
+    background-color: rgba(150, 100, 255, 0.9);
+	
+}
+
+.inlineBlock {
+	display: inlin-block;
+}
