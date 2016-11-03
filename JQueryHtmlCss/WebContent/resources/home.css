@@ -1,0 +1,106 @@
+@CHARSET "ISO-8859-1";
+
+.ui-menu {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	text-align: right;
+	display: inline-block;
+}
+.ui-menu-item {
+	padding: 0.5em;	
+}
+
+#left-menu {
+	margin: 1em;
+}
+
+#toggle {
+	margin: 1em;
+}
+
+#left-wrapper {
+	width: 10em;
+}
+
+#select-div {
+	margin: 1em;
+}
+
+body{	
+	font: 62.5% "Trebuchet MS", sans-serif;
+}
+
+#wrapper{	
+	background: #FFFFFF;
+	margin: 60px auto;
+	width: 900px;
+	height: 984px;
+}
+
+#header{	
+	background: #F0F0F0;
+	height: 200px;
+	width: 900px;
+	background-image: url("images/unical.png");
+}
+
+#menu{
+	background: #aaaabb;
+	float: left;
+}
+
+#content{
+	background: #d2d0d2;	
+	width: 900px;
+	height: 784px;
+}
+
+#footer{ 
+	background: #838283;
+	height: 20px;
+	width: 900px;
+	text-indent: 10px;
+}
+
+#hidden{
+	display: none;
+}
+
+#checkboxes {
+	text-align: center;
+	margin: auto;
+	display: inline-block;
+}
+
+.par{
+	background: yellow;
+}
+
+.button, #large-small-button, #text {	
+    margin-left:1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    min-width: 8em;
+    max-width: 8em;
+}
+#large-small-button {
+	min-width: 6em;
+    max-width: 6em;
+}
+#text {
+	min-width: 6em;
+    max-width: 6em;
+}
+
+#showHide-menu-wrapper {
+	margin: 0.5em;	
+}
+
+.images{
+	height: 210px;
+	width: 250px;
+}
+
+.imagessmall{
+	height: 105px;
+	width: 125px;
+}

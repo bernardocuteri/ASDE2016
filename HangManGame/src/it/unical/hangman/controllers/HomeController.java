@@ -13,18 +13,19 @@ import it.unical.hangman.businessLogic.HangmanGame;
 
 @Controller
 @SessionAttributes("hangmanGame")
+@RequestMapping(value="/")
 public class HomeController {
 	
 	@Autowired
 	private WebApplicationContext context;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute("hangmanGame", context.getBean("hangmanGame", HangmanGame.class));
 		return "home";
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET, params = "buy")
+	@RequestMapping(method = RequestMethod.GET, params = "buy")
 	public String buyCharacter(@ModelAttribute("hangmanGame") HangmanGame hm, @RequestParam String buy) {
 		hm.buyLetter(buy);
 		return "home";
