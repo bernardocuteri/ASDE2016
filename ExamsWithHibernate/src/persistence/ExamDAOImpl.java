@@ -9,37 +9,24 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import model.Exam;
+import persistence.DBHandler.Operation;
 
 public class ExamDAOImpl implements ExamDAO {
 	
-	private SessionFactory sessionFactory;
 	
 	public ExamDAOImpl() {
-		Configuration config = new Configuration().configure();
-		StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
-				.applySettings(config.getProperties());
-		sessionFactory = config.buildSessionFactory(builder.build());
+		
 	}
 
 	@Override
 	public void create(Exam exam) {
-		Session session = sessionFactory.openSession();
-		Transaction tx = null;
-		try {
-			tx= session.beginTransaction();
-			session.save(exam);
-			tx.commit();
-		}
-		catch (Exception e) {
-			tx.rollback();
-		}
-		session.close();		
+		DBHandler.getInstance().performOperation(exam, Operation.SAVE);
 	}
 
 	@Override
 	public Exam getExamById(int id) {
 		
-		Session session = sessionFactory.openSession();
+		Session session = DBHandler.getInstance().openSession();
 		Exam exam = (Exam)session.createSQLQuery("SELECT * FROM exam WHERE id="+id).addEntity(Exam.class).uniqueResult();
 		session.close();
 		return exam;
@@ -49,7 +36,7 @@ public class ExamDAOImpl implements ExamDAO {
 	@Override
 	public Exam getExamByName(String name) {
 
-		Session session = sessionFactory.openSession();
+		Session session = DBHandler.getInstance().openSession();
 		Exam exam = (Exam)session.createSQLQuery("SELECT * FROM exam WHERE name='"+name+"'").addEntity(Exam.class).uniqueResult();
 		session.close();
 		return exam;
@@ -58,7 +45,7 @@ public class ExamDAOImpl implements ExamDAO {
 	@Override
 	@SuppressWarnings(value="unchecked")
 	public List<Exam> getExamsOfProfessor(String professor) {
-		Session session = sessionFactory.openSession();
+		Session session = DBHandler.getInstance().openSession();
 		List<Exam> result = (List<Exam>) session.createSQLQuery("SELECT * FROM exam WHERE professor='"+professor+"'").addEntity(Exam.class).list();
 		session.close();
 		return result;
@@ -66,34 +53,11 @@ public class ExamDAOImpl implements ExamDAO {
 
 	@Override
 	public void saveUpdates(Exam exam) {
-		Session session = sessionFactory.openSession();
-		Transaction tx = null;
-		try {
-			tx = session.beginTransaction();
-			session.update(exam);
-			tx.commit();
-		}catch (Exception e) {
-			tx.rollback();
-		} finally {
-			session.close();
-		}			
-		
+		DBHandler.getInstance().performOperation(exam, Operation.UPDATE);
 	}
 
 	@Override
 	public void deleteExam(Exam exam) {
-		Session session = sessionFactory.openSession();
-		Transaction tx = null;
-		try {
-			tx = session.beginTransaction();
-			session.delete(exam);
-			tx.commit();
-		}catch (Exception e) {
-			tx.rollback();
-		} finally {
-			session.close();
-		}		
-		
+		DBHandler.getInstance().performOperation(exam, Operation.DELETE);
 	}
-
 }

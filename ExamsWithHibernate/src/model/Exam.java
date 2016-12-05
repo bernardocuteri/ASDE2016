@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,14 +23,20 @@ public class Exam implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
 	private int id;
-	@Column(nullable=false, length=50, unique=true)
+	
+	@Column(nullable=false, length=50)	
 	private String name;
-	@Column(nullable=false)
+	
+	@Column(nullable=false)	
 	private int credits;
-	@Column(nullable=false)
-	private String student;
-	@Column(nullable=false)
+	
+	@ManyToOne
+	@JoinColumn(name="student", nullable=false)
+	private Student student;
+	
+	@Column(nullable=false)	
 	private String professor;
+	
 	@Column(nullable=false)
 	private int mark;
 	
@@ -37,7 +45,7 @@ public class Exam implements Serializable {
 	
 	
 	
-	public Exam(String name, int credits, String student, String professor, int mark) {
+	public Exam(String name, int credits, Student student, String professor, int mark) {
 		super();
 		this.name = name;
 		this.credits = credits;
@@ -67,10 +75,10 @@ public class Exam implements Serializable {
 	public void setCredits(int credits) {
 		this.credits = credits;
 	}
-	public String getStudent() {
+	public Student getStudent() {
 		return student;
 	}
-	public void setStudent(String student) {
+	public void setStudent(Student student) {
 		this.student = student;
 	}
 	public String getProfessor() {
