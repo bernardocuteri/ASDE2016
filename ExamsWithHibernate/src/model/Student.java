@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -44,6 +45,9 @@ public class Student implements Serializable {
 	
 	@OneToMany(mappedBy="student")	
 	private List<Exam> exams=new ArrayList<Exam>();
+	
+	@ManyToMany(mappedBy="students")
+	private List<AcademicCourse> attendingCourses;
 
 	public int getId() {
 		return id;
